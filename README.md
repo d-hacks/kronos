@@ -1,7 +1,6 @@
 # kronos
 ## Overview
-This is the docker based command for machine learning project.  
-kronos helps that you mind the difference between a local cpu environemnt and a cuda gpu environment.  
+Kronos is a docker based command for executing machine learning projects which can automatically differenciate between a local cpu environemnt and a cuda gpu environment and run accordingly.
 
 ## Installation
 1. Install [pip](https://pip.pypa.io/en/stable/).
@@ -12,31 +11,28 @@ pip install git+https://github.com/d-hacks/kronos
 
 ## Command
 ### Introduce kronos to your project
-In order to use kronos, you need to create the kronos configuration files in your project directory.  
-In kronos, you can create that only to executing the following `init` command.  
+In order to use kronos, you need to create the kronos configuration files in your project directory by executing the following `init` command.  
 ```
 kronos init
 ```
 
 ### Build the container
-Create the docker-compose container of python environment.  
-This container provides python in Ubuntu 18.04 environment.  
-If you want to create the cpu environment, please type the following commaned.
+The following commands build the docker-compose container for Python in Ubuntu 18.04 environment.
+For CPU environments, type in
 ```
 kronos build
 ```
-If you want to create the gpu environment, please type the following commaned.
+For GPU environments, type in
 ```
 kronos build --gpu
 ```
 
-### Run the python file in the built docker container
-Run the python file in cpu environment
-({python\_file} is the target file that you want to run)
+### Run the Python file in the docker container you built
+For CPU environments, use
 ```
-kronos run {python file}
+kronos run {YOUR_PYTHON_FILE.py}
 ```
-Run the python file in gpu environment
+For GPU environments, use
 ```
 kronos run --gpu {python file}
 ```
