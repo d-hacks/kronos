@@ -1,0 +1,27 @@
+docker_path: './docker'
+
+# kronos path (you can check by typing 'which kronos' in remote server)
+kronos_path: 'home/tanimu/.pyenv/versions/miniconda3-4.3.30/bin'
+
+# Number of GPUs to use
+num_use_gpu: 1
+
+# gitURL and branch of the project
+git_url: 'https://github.com/tanimutomo/cnn.git'
+git_branch: 'master'
+
+# project directory path
+pj_root: '~/Project/kronos'
+
+# The path of the project's data directory
+data_dir: 'data/'
+
+# The path of the original data directory in the remote server you want to copy to the project's data directory
+origin_data: '~/Project/data/mnist_data'
+
+# If you fix the GPU server and GPU number you use, please specify them
+fix_server: ''
+fix_gpu: []
+
+# ssh config path
+ssh_config_path: '~/.ssh/config'
