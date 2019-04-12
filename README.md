@@ -15,16 +15,24 @@ The packages written int the {cpu/gpu}\_requirements.txt is install via pip.
 Create the docker-compose container of python environment.  
 This container provides python in Ubuntu 18.04 environment.  
 If you want to create the cpu environment, please type the following commaned.
-`kronos build`
+```
+kronos build
+```
 If you want to create the gpu environment, please type the following commaned.
-`kronos build --gpu`
+```
+kronos build --gpu
+```
 
 ### Run the python file in the built docker container
 Run the python file in cpu environment
 ({python\_file} is the target file that you want to run)
-`kronos run {python file}`
+```
+kronos run {python file}
+```
 Run the python file in gpu environment
-`kronos run --gpu {python file}`
+```
+kronos run --gpu {python file}
+```
 
 ## Tutorial
 
