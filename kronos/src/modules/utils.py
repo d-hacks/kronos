@@ -38,16 +38,6 @@ def run_command(use_gpu):
 
     return args
 
-
-def job_command(filename):
-    config = load_kronos_config()
-    set_cuda = CUDASetting(config)
-    using_server, using_gpu = set_cuda.select_server_and_gpu()
-
-    ssh_client = SSHClient(using_server, using_gpu, filename, config)
-    ssh_client.set_project()
-    ssh_client.execute()
-
 def check_dir(dir):
     if dir is not None:
         os.mkdir(dir)

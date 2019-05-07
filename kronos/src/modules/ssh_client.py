@@ -155,7 +155,6 @@ class SSHClient:
 
 
     def handler(signal, frame):
-        print('WARNING: CUDA SETTING is inserted to the head of execution file such as main.py in the remote server.' +
-        'Please check, if you operate DIRECTLY it without using "kronos job" again.')
+        print('WARNING: CUDA SETTING is inserted to the head of execution file such as main.py in the remote server.')
         sys.exit(0)
 

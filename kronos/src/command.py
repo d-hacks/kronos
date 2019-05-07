@@ -1,4 +1,4 @@
-from .modules.utils import logger, get_src_path, run_command, base_command, job_command, check_dir, copy_files_to_working_dir
+from .modules.utils import logger, get_src_path, run_command, base_command, check_dir, copy_files_to_working_dir
 import shutil
 import os
 import subprocess
@@ -17,12 +17,6 @@ def run(use_gpu, filename):
     try:
         res = subprocess.check_call(args)
         logger.info(res)
-    except Exception as E:
-        print(E)
-
-def job(filename):
-    try:
-        job_command(filename)
     except Exception as E:
         print(E)
 

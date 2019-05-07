@@ -20,11 +20,6 @@ def init(dir):
 def run(gpu, filename):
     command.run(gpu, filename)
 
-@main.command(help='run script in docker container of the remote server')
-@click.argument('filename')
-def job(filename):
-    command.job(filename)
-
 @main.command(help='ipython shell in docker container')
 @click.option('--gpu/--local', default=False)
 def shell(gpu):
