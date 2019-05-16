@@ -40,7 +40,7 @@ def build(use_gpu):
 
 def notebook(use_gpu):
     args = run_command(use_gpu)
-    args.extend(['--service-ports', 'experiment', 'jupyter', 'notebook', '--ip=0.0.0.0', '--port', '8888'])
+    args.extend(['--service-ports', 'experiment', 'jupyter', 'notebook', '--allow-root', '--ip=0.0.0.0', '--port', '8888'])
     try:
         res = subprocess.check_call(args)
         logger.info(res)
