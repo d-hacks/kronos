@@ -1,7 +1,7 @@
 import logging
 import os
-from oyaml import yaml
 import shutil
+import oyaml as yaml
 
 logger = logging.getLogger(__name__)
 
@@ -27,7 +27,7 @@ def change_imgname(imgname, project_dir):
             dcyml = yaml.safe_load(f)
         dcyml['services']['experiment']['image'] = imgname
         with open(yml_path, 'w') as f:
-            dcyaml.safe_dump(dcyml, f)
+            yaml.safe_dump(dcyml, f)
 
 def copy_files_to_working_dir(filename_list, working_dir):
     for filename in filename_list:
