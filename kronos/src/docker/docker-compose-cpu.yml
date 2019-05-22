@@ -8,4 +8,4 @@ services:
     build:
       context: .
       dockerfile: cpu.Dockerfile
-    image: tf_cpu_sample
+    image: default
