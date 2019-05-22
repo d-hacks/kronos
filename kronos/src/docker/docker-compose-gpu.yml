@@ -1,6 +1,8 @@
 version: '2.3'
 services:
   experiment:
+    ports:
+      - 8888:8888
     runtime: nvidia
     volumes:
       - ..:/app
