@@ -9,9 +9,10 @@ def main():
     pass
 
 @main.command(help='initialize machine learning project')
+@click.argument('imgname')
 @click.option('--dir', default=None)
-def init(dir):
-    command.init(dir)
+def init(imgname, dir):
+    command.init(imgname, dir)
 
 @main.command(help='run script in docker container')
 @click.argument('filename')
