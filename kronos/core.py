@@ -13,7 +13,6 @@ def main():
 def init(dir):
     command.init(dir)
 
-
 @main.command(help='run script in docker container')
 @click.argument('filename')
 @click.option('--gpu/--local', default=False)
@@ -34,6 +33,11 @@ def build(gpu):
 @click.option('--gpu/--local', default=False)
 def notebook(gpu):
     command.notebook(gpu)
+
+@main.command(help='run /bin/bash in the container')
+@click.option('--gpu/--local', default=False)
+def bash(gpu):
+    command.bash(gpu)
 
 if __name__ == '__main__':
     main()

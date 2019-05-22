@@ -20,7 +20,7 @@ def run(use_gpu, filename):
     except Exception as E:
         print(E)
 
-def shell(use_gpu):
+def ipython(use_gpu):
     args = run_command(use_gpu)
     args.extend(['experiment', 'ipython'])
     try:
@@ -41,6 +41,15 @@ def build(use_gpu):
 def notebook(use_gpu):
     args = run_command(use_gpu)
     args.extend(['--service-ports', 'experiment', 'jupyter', 'notebook', '--allow-root', '--ip=0.0.0.0', '--port', '8888'])
+    try:
+        res = subprocess.check_call(args)
+        logger.info(res)
+    except Exception as E:
+        print(E)
+
+def bash(use_gpu):
+    args = run_command(use_gpu)
+    args.extend(['experiment', '/bin/bash'])
     try:
         res = subprocess.check_call(args)
         logger.info(res)
