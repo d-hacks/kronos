@@ -36,8 +36,9 @@ def notebook(gpu):
 
 @main.command(help='run /bin/bash in the container')
 @click.option('--gpu/--local', default=False)
-def bash(gpu):
-    command.bash(gpu)
+@click.option('--name', default=None)
+def bash(gpu, name):
+    command.bash(gpu, name)
 
 if __name__ == '__main__':
     main()

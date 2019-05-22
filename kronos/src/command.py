@@ -47,8 +47,10 @@ def notebook(use_gpu):
     except Exception as E:
         print(E)
 
-def bash(use_gpu):
+def bash(use_gpu, name=None):
     args = run_command(use_gpu)
+    if name:
+        args.extend(['--name', name])
     args.extend(['experiment', '/bin/bash'])
     try:
         res = subprocess.check_call(args)
