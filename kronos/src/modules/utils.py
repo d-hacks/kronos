@@ -1,9 +1,7 @@
 import logging
 import os
-import yaml
 import shutil
-from .ssh_client import SSHClient
-from .cuda_setting import CUDASetting
+import oyaml as yaml
 
 logger = logging.getLogger(__name__)
 
@@ -22,6 +20,14 @@ def load_kronos_config():
     config = yaml.load(f)
     return config
 
+def change_imgname(imgname, project_dir):
+    for device in ['cpu', 'gpu']:
+        yml_path = os.path.join(project_dir, 'docker', 'docker-compose-{}.yml'.format(device))
+        with open(yml_path, 'r') as f:
+            dcyml = yaml.safe_load(f)
+        dcyml['services']['experiment']['image'] = imgname
+        with open(yml_path, 'w') as f:
+            yaml.safe_dump(dcyml, f)
 
 def copy_files_to_working_dir(filename_list, working_dir):
     for filename in filename_list:
