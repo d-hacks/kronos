@@ -19,7 +19,7 @@ setup(
     },
     install_requires=[
         'click',
-        'PyYAML',
+        'oyaml',
     ],
     classifiers=[
         'Programming Language :: Python :: 3.6',
