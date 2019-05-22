@@ -1,4 +1,4 @@
-from .modules.utils import logger, get_src_path, run_command, base_command, check_dir, copy_files_to_working_dir, change_imgname
+from .modules.utils import logger, get_src_path, run_command, base_command, check_dir, copy_files_to_working_dir, change_imgname, send_files
 import shutil
 import os
 import subprocess
@@ -8,10 +8,9 @@ def init(imgname, dir=None):
     target_dir = check_dir(dir)
     docker_path = os.path.join(src_path, 'docker')
     shutil.copytree(docker_path, os.path.join(target_dir, 'docker'))
-    filename_list = ['.gitignore', 'kronos-config.yml']
+    filename_list = send_files(target_dir)
     copy_files_to_working_dir(filename_list, target_dir)
     change_imgname(imgname, target_dir)
-
 
 def run(use_gpu, filename):
     args = run_command(use_gpu)
