@@ -17,7 +17,7 @@ def copy_file_to_working_dir(filename, working_dir):
 
 def load_kronos_config():
     f = open(os.path.join(os.getcwd(), "kronos-config.yml"), "r+")
-    config = yaml.load(f)
+    config = yaml.safe_load(f)
     return config
 
 def change_imgname(imgname, project_dir):
