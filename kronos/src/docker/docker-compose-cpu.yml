@@ -2,7 +2,7 @@ version: '3'
 services:
   experiment:
     ports:
-      8888:8888
+      - 8888:8888
     volumes:
       - ..:/app
     build:
