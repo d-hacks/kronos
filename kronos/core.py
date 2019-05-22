@@ -22,7 +22,7 @@ def run(gpu, filename):
 
 @main.command(help='ipython shell in docker container')
 @click.option('--gpu/--local', default=False)
-def shell(gpu):
+def ipython(gpu):
     command.shell(gpu)
 
 @main.command(help='build docker container')
