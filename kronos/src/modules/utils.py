@@ -55,3 +55,13 @@ def check_dir(dir):
                 return os.getcwd()
             elif inp in ['n', 'no']:
                 return False
+
+def send_files(project_dir):
+    gitignore = os.path.join(project_dir, '.gitignore')
+    if os.path.exists(gitignore):
+        while True:
+            inp = input('Do you want to overwrite the current gitignore with the default python gitignore? [Y/n]: ').lower()
+            if inp in ['y', 'ye', 'yes', '']:
+                return ['.gitignore', 'kronos-config.yml']
+            elif inp in ['n', 'no']:
+                return ['kronos-config.yml']
