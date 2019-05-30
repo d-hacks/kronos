@@ -1,6 +1,6 @@
 # kronos
 ## Overview
-Kronos is a docker based command for executing machine learning projects which can automatically differenciate between a local cpu environemnt and a cuda gpu environment and run accordingly.
+Kronos is a docker based command for executing machine learning projects which can automatically differenciate between a local cpu environment and a CUDA GPU environment and run accordingly.
 
 ## Installation
 1. Install [pip](https://pip.pypa.io/en/stable/).
@@ -43,3 +43,58 @@ kronos run --gpu {python file}
 Fill in the required python packages in the {cpu/gpu}\_requirements.txt.  
 The packages written int the {cpu/gpu}\_requirements.txt is install via pip.
 -->
+
+### Creating a Sample Test Project
+Create an empty directory to be used by kronos as a project directory and move into it.
+```
+mkdir test
+cd test
+```
+Generate a sample Python file using a text editor.
+```
+nano sample_code.py
+```
+Inside the file, insert the following code.
+```
+import torch
+
+a = torch.randn((3, 2))
+b = torch.randn((2, 4))
+
+c = torch.matmul(a, b)
+
+print(c.size())
+```
+Save and exit. If you are using Nano, save the file by pressing Ctrl + O, and exit using Ctrl + X.
+
+### Running the Project with kronos
+Initialize the kronos project directory.
+```
+kronos init
+```
+The test directory should now have a `docker` directory, `kronos-config.yml`, and `sample_code.py`.
+The next step is to let Docker/kronos know about the libraries that you will be using while running your Python file. This is done using the requirements file in the docker folder.
+List all items in the docker directory.
+```
+ls docker
+```
+Out of all the files in the directory, the ones that we will be focusing on are `cpu_requirements.txt` and `gpu_requirements.txt`. Choose the requirement file based on whether your environment is using CPU or GPU processors. `cpu_requirements.txt` is used in this tutorial.
+Open the text file.
+```
+nano docker/cpu_requirements.txt
+```
+This is the list of all the libraries that the Docker will be installing into its virtual environment.
+Add the libraries that the Python will be using. Since `sample_code.py` imports Pytorch (specified by `import torch`), Pytorch should be added to the list. Note that unnecessary libraries, such as Tensorflow in this case, should be omitted in order to reduce unnecessary install time.
+The text file should now read as below.
+```
+torch
+```
+Save and exit.
+Using the build command, build a docker container and install all libraries in it.
+```
+kronos build
+```
+Finally, run the Python file. Note that the command will vary depending on whether the environment is CPU or GPU based.
+```
+kronos run sample_code.py
+```
