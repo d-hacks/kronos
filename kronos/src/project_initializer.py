@@ -1,5 +1,6 @@
 import yaml
 
+
 def init_project_prompt():
     data = {
         'dependencies': [],
@@ -21,6 +22,7 @@ def init_project_prompt():
 
     with open('kronosspec.yml', 'w') as outfile:
         yaml.dump(data, outfile, default_flow_style=False)
+
 
 if __name__ == "__main__":
     init_project_prompt()

@@ -11,7 +11,7 @@ setup(
     packages=find_packages(),
     package_data={
         'kronos': ['src/docker/*', 'src/kronos-config.yml', 'src/.gitignore']
-        },
+    },
     entry_points={
         "console_scripts": [
             "kronos=kronos.core:main",
