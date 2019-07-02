@@ -45,6 +45,8 @@ The packages written int the {cpu/gpu}\_requirements.txt is install via pip.
 -->
 
 ### Creating a Sample Test Project
+Skip this step if you already have a project that you want to implement to Kronos.
+
 Create an empty directory to be used by kronos as a project directory and move into it.
 ```
 mkdir test
@@ -84,17 +86,21 @@ Open the text file.
 nano docker/cpu_requirements.txt
 ```
 This is the list of all the libraries that the Docker will be installing into its virtual environment.
-Add the libraries that the Python will be using. Since `sample_code.py` imports Pytorch (specified by `import torch`), Pytorch should be added to the list. Note that unnecessary libraries, such as Tensorflow in this case, should be omitted in order to reduce unnecessary install time.
+Add the libraries in your project that will be used bt Python. In the context of the sample project explained above, since `sample_code.py` imports Pytorch (specified by `import torch`), Pytorch should be added to the list. Note that unnecessary libraries, such as Tensorflow in this case, should be omitted in order to reduce unnecessary install time.
 The text file should now read as below.
 ```
 torch
 ```
+Specific versions of the library can be specified optionally.
+```
+torch==1.1.0
+```
 Save and exit.
-Using the build command, build a docker container and install all libraries in it.
+Using the build command, build a docker container and install all libraries in it. Add `--gpu` for use in GPU environments.
 ```
 kronos build
 ```
-Finally, run the Python file. Note that the command will vary depending on whether the environment is CPU or GPU based.
+Finally, run the Python file. Add `--gpu` for use in GPU environments.
 ```
 kronos run sample_code.py
 ```
