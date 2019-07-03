@@ -84,3 +84,5 @@ def send_files(project_dir):
                 return ['.gitignore', 'kronos-config.yml']
             elif inp in ['n', 'no']:
                 return ['kronos-config.yml']
+    else:
+        return ['.gitignore', 'kronos-config.yml']
