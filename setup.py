@@ -5,7 +5,7 @@ with open('requirements.txt') as requirements_file:
 
 setup(
     name="kronos-ml",
-    version="0.0.1",
+    version="0.0.2",
     description="cli and toolkit for executing machine learning experiment in docker images",
     author="d-hacks",
     packages=find_packages(),
