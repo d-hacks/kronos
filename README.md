@@ -11,9 +11,13 @@ pip install git+https://github.com/d-hacks/kronos
 
 ## Command
 ### Introduce kronos to your project
-In order to use kronos, you need to create the kronos configuration files in your project directory by executing the following `init` command. You are required to set an IMAGENAME for docker. It is recommended to include your user name if you are running the project in a new environment, such as `USERNAME/NAME`.
+In order to use kronos, you need to create the kronos configuration files in your project directory (current directory) by executing the following `init` command.
 ```
-kronos init IMAGENAME
+kronos init [OPTIONS]
+```
+The init command allows users to set the location of the project directory with the option `--dir`.
+```
+kronos init --dir {DIRECTORY_LOCATION}
 ```
 
 ### Build the container
@@ -70,9 +74,9 @@ print(c.size())
 Save and exit. If you are using Nano, save the file by pressing Ctrl + O, and exit using Ctrl + X.
 
 ### Running the Project with kronos
-Initialize the kronos project directory. Here, we will set the image name to `test`.
+Initialize the kronos project directory.
 ```
-kronos init test
+kronos init
 ```
 The test directory should now have a `docker` directory, `kronos-config.yml`, and `sample_code.py`.
 The next step is to let Docker/kronos know about the libraries that you will be using while running your Python file. This is done using the requirements file in the docker folder.
