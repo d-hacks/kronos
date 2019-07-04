@@ -41,6 +41,11 @@ def build(gpu):
 def notebook(gpu):
     command.notebook(gpu)
 
+@main.command(help='run jupter lab in docker container')
+@click.option('--gpu/--local', default=False)
+def lab(gpu):
+    command.notebook(gpu)
+
 
 @main.command(help='run /bin/bash in the container')
 @click.option('--gpu/--local', default=False)
