@@ -54,6 +54,16 @@ def notebook(use_gpu):
     except Exception as E:
         print(E)
 
+def lab(use_gpu):
+    args = run_command(use_gpu)
+    args.extend(['--service-ports', 'experiment', 'jupyter',
+                 'lab', '--allow-root', '--ip=0.0.0.0', '--port', '8888'])
+    try:
+        res = subprocess.check_call(args)
+        logger.info(res)
+    except Exception as E:
+        print(E)
+
 
 def bash(use_gpu, name=None):
     args = run_command(use_gpu)
