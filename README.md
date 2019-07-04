@@ -6,7 +6,7 @@ Kronos is a docker based command for executing machine learning projects which c
 1. Install [pip](https://pip.pypa.io/en/stable/).
 1. Install kronos via pip
 ```
-pip install git+https://github.com/d-hacks/kronos
+pip install kronos-ml
 ```
 
 ## Command
