@@ -11,10 +11,9 @@ def main():
 
 
 @main.command(help='initialize machine learning project')
-@click.argument('imgname')
 @click.option('--dir', default=None)
-def init(imgname, dir):
-    command.init(imgname, dir)
+def init(dir):
+    command.init(dir)
 
 
 @main.command(help='run script in docker container')
@@ -40,6 +39,7 @@ def build(gpu):
 @click.option('--gpu/--local', default=False)
 def notebook(gpu):
     command.notebook(gpu)
+
 
 @main.command(help='run jupter lab in docker container')
 @click.option('--gpu/--local', default=False)

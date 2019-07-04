@@ -27,7 +27,16 @@ def load_kronos_config():
     return config
 
 
-def change_imgname(imgname, project_dir):
+def change_imgname(project_dir):
+    path = project_dir.split('/')
+    project_name = path[-1]
+    inp = input(
+            'Docker image name [default: {}]:'.format(project_name)).lower()
+    if inp != "":
+        imgname = inp
+    else:
+        imgname = project_name
+
     for device in ['cpu', 'gpu']:
         yml_path = os.path.join(
             project_dir,
@@ -35,6 +44,7 @@ def change_imgname(imgname, project_dir):
             'docker-compose-{}.yml'.format(device))
         with open(yml_path, 'r') as f:
             dcyml = yaml.safe_load(f)
+
         dcyml['services']['experiment']['image'] = imgname
         with open(yml_path, 'w') as f:
             yaml.safe_dump(dcyml, f)
@@ -47,10 +57,10 @@ def copy_files_to_working_dir(filename_list, working_dir):
 
 def base_command(use_gpu):
     if use_gpu:
-        return ['docker-compose', '-f',
-                '{}/docker-compose-gpu.yml'.format(load_kronos_config()['docker_path'])]
-    return ['docker-compose', '-f',
-            '{}/docker-compose-cpu.yml'.format(load_kronos_config()['docker_path'])]
+        return ['docker-compose', '-f', '{}/docker-compose-gpu.yml'.format(
+            load_kronos_config()['docker_path'])]
+    return ['docker-compose', '-f', '{}/docker-compose-cpu.yml'.format(
+        load_kronos_config()['docker_path'])]
 
 
 def run_command(use_gpu):
