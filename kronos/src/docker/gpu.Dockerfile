@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y \
 RUN ${PIP} install --upgrade \
     pip \
     setuptools
-RUN pip install jupyter
+RUN pip install jupyter jupyterlab
 
 WORKDIR /app
 ADD . /app
