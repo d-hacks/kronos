@@ -106,3 +106,4 @@ venv.bak/
 # mine
 kronos/src/modules/ssh_client.py
 kronos/src/modules/cuda_setting.py
+Pipfile
